@@ -1,0 +1,36 @@
+group 'com.mihao'
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+jar {
+    baseName = 'server'
+}
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile group: 'de.codecentric', name: 'spring-boot-admin-server', version: '1.5.7'
+    compile group: 'de.codecentric', name: 'spring-boot-admin-server-ui', version: '1.5.7'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+    }
+}
+
+bootRun {
+    addResources = true
+}
